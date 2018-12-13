@@ -1,11 +1,13 @@
 'use strict';
+/* global $*/ 
+
 const api = (function(){
 
-  const BASE_URL =  'https://thinkful-list-api.herokuapp.com/mikey/bookmarks';
+  const BASE_URL =  'https://thinkful-list-api.herokuapp.com/mikey';
 
   const getItems = function(){
-    // getJSON request GET
-
+    $.getJSON(`${BASE_URL}/bookmarks`, () =>{
+      console.log('GET worked)');});
   };
   const createItem = function(){
     // JSON stringify then ajax post

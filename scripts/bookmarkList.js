@@ -45,7 +45,7 @@ const bookmarkList = (function(){
     // api delete request
   }
 
-  function 
+   
 
   
   function bindEventListeners(){

@@ -1,15 +1,14 @@
 'use strict';
+/*global bookmarkList, api, $*/
 
 
 $(document).ready(function() {
  
  
  
-  // shoppingList.bindEventListeners();
-  // shoppingList.render();
-  // api.getItems((items) => {
-  //   items.forEach((item) => store.addItem(item));
-  //   shoppingList.render();
-
-  // });
+  bookmarkList.bindEventListeners();
+  bookmarkList.render();
+  api.getItems((items) => {
+    console.log( items, 'contacted server');
+  });
 });
