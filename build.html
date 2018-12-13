@@ -1,0 +1,58 @@
+
+<!-- this is the contracted form html -->
+<section class="contracted-form">
+    <label for="form-expansion">Submit new Bookmark:</label>
+    <button for="form-expansion">Click to Expand</button>    
+    <br>
+    <label for="rating">Filter by minimum rating:</label>
+    <select name="rating" id="rating-dropdown">
+      <option value="5">5</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1" selected="selected">1</option>
+   </select>
+</section>
+
+<!-- this is the expanded form html -->
+
+  <section class="expanded-form">
+      <form class="js-add-bookmark">
+       <fieldset>
+         <legend>Add Bookmark</legend>
+           <div class="input-group"></div>
+             <label for="title">Bookmark Title</label>
+             <input type="text" placeholder="insert Title here">
+           <div class="input-group"></div>
+             <label for="title">Bookmark  URL</label>
+             <input type="text" placeholder="insert URL here">
+           <div class="input-group">
+             <label for="title">Description</label>
+             <input type="text" placeholder="write a short description">
+           </div>
+           <div class="input-group">
+             <label for="rating">Rate this bookmark</label><br>
+             <input type="radio" name="rating" value="5"> 5
+             <input type="radio" name="rating" value="4"> 4
+             <input type="radio" name="rating" value="3" selected="selected"> 3
+             <input type="radio" name="rating" value="2"> 2
+             <input type="radio" name="rating" value="1"> 1
+           </div>
+           <label for="submit-button">Submit new bookmark:</label>
+           <button name="submit">Submit</button>
+        </fieldset>
+      </form>
+   <button class="cancel"name="cancel">cancel</button>
+</section>
+
+<!-- Contracted li -->
+
+<li class="contracted-li" data-item-id="">
+    <div class="contracted">
+      <h3>title</h3>
+      <button name="expand">expand</button>
+      <p class="rating">Rating = </p>
+    </div>
+  </li>
+
+  
