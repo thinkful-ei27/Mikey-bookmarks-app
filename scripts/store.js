@@ -4,11 +4,10 @@ const store = (function(){
   const addExpandkey = function(obj){
     obj['expanded'] = false;
     addItem(obj);
-    console.log(obj.expanded);
+   
   };
 
   const addItem = function(item){
-    // add items to this.items.push
     store.items.push(item);
   };
   
@@ -62,4 +61,3 @@ const store = (function(){
   };
 }());
 
-console.log(store.items);
