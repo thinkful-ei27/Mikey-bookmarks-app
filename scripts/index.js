@@ -1,12 +1,12 @@
 'use strict';
-/*global bookmarkList, api, $*/
+/*global bookmarkList, api, store $*/
 
 
 $(document).ready(function() {
  
   bookmarkList.bindEventListeners();
   bookmarkList.render();
-  api.getItems();
+  api.getItems(store.addExpandkey);
  
 });
 

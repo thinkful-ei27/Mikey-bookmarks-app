@@ -1,5 +1,5 @@
 'use strict';
-/* global $*/ 
+/* global api, $*/ 
 
 const api = (function(){
 
