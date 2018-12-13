@@ -1,5 +1,5 @@
 'use strict';
-/*global store */
+/*global store, $*/
 
 const bookmarkList = (function(){
 
@@ -66,8 +66,11 @@ const bookmarkList = (function(){
 
   function render(){
     // if item.rating< store.minimumrating do not display item with filter
+    
+    const formString = generateFormNavigation();
+    
     //  insert into dom
-
+    $('#form-container').html(formString);
   }
 
   function getItemIdFromElement(){
