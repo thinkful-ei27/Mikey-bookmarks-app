@@ -1,3 +1,5 @@
 'use strict';
 
-console.log('bookmarklist here');
+const bookmarkList = (function(){
+
+})();
