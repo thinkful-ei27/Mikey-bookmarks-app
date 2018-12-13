@@ -5,3 +5,10 @@
 h1{
   color:  brown;
 }
+
+li {
+  border: 1px black solid;
+  padding: 0px 10px 10px 10px;
+  list-style-type: none;
+
+}
