@@ -32,12 +32,12 @@ const bookmarkList = (function(){
            <button name="submit">Submit</button>
         </fieldset>
       </form>
-   <button class="cancel"name="cancel">cancel</button>   
+   <button class="js-form-expansion"name="cancel">cancel</button>   
 </section>`;
     }
     return `<section class="contracted-form">
     <label for="form-expansion">Submit new Bookmark:</label>
-    <button for="form-expansion">Click to Expand</button>    
+    <button class="js-form-expansion">Click to Expand</button>    
     <br>
     <label for="rating">Filter by minimum rating:</label>
     <select name="rating" id="rating-dropdown">
@@ -79,6 +79,12 @@ const bookmarkList = (function(){
   }
 
   function handleNewSubmitToggle(){
+    console.log('handleNewSubmitToggle ran');
+    $('#form-container').on('click', '.js-form-expansion',()=>{
+      console.log('form submit toggle clicked');
+      store.expandForm();
+      render();
+    });
 
   }
 
@@ -94,7 +100,7 @@ const bookmarkList = (function(){
 
   
   function bindEventListeners(){
-
+    handleNewSubmitToggle();
 
   }
 

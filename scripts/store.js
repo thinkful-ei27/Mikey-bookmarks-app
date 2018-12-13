@@ -6,8 +6,9 @@ const store = (function(){
   };
   
   const expandForm =function(){
-    //toggles expand form in store
-  }
+    this.newSubmitform =!this.newSubmitform;
+  };
+
   const findById = function(){
     // pass an id into the function, return the item from store.items     
   };
