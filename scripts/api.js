@@ -6,9 +6,10 @@ const api = (function(){
   const BASE_URL =  'https://thinkful-list-api.herokuapp.com/mikey';
 
   const getItems = function(){
-    $.getJSON(`${BASE_URL}/bookmarks`, () =>{
-      console.log('GET worked)');});
+    $.getJSON(`${BASE_URL}/bookmarks`, (res) =>{
+      console.log('GET worked)',res);});
   };
+
   const createItem = function(){
     // JSON stringify then ajax post
   };
