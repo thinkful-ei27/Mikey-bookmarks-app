@@ -4,6 +4,10 @@ const store = (function(){
   const addItem = function(){
     // add items to this.items.push
   };
+  
+  const expandForm =function(){
+    //toggles expand form in store
+  }
   const findById = function(){
     // pass an id into the function, return the item from store.items     
   };

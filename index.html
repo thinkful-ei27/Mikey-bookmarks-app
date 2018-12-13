@@ -10,7 +10,20 @@
 <body>
   <main>
     <h1 class="title">Bookmark List</h1>
-    <div id="form-container"> </div>
+    <div id="form-container"> 
+      <div class="contracted-form">
+        <label for="form-expansion">Submit new Bookmark:</label>
+        <button for="form-expansion">Click to Expand</button>    
+        <label for="rating">Filter by minimum rating:</label>
+        <select name="rating" id="rating-dropdown">
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+       </select>
+      </div>
+    </div>
     <ul class="bookmarks-list"></ul>
   </main>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
