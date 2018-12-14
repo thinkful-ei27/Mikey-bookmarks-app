@@ -1,28 +1,36 @@
 'use strict';
 const store = (function(){
 
-  const addExpandkey = function(obj){
-    obj['expanded'] = false;
-    addItem(obj);
-   
+  const addExpandkey = function(){
+    store.items.map((item)=> {
+      item['expanded'] = false;
+    });
   };
 
-  const addItem = function(item){
-    store.items.push(item);
+  const addItem = function(arr){
+    arr.map((item)=> {console.log(typeof item);
+      store.items.push(item);});
+    addExpandkey();
+    // the api sends an array of item objects
   };
+  
   
   const expandForm =function(){
     this.newSubmitform =!this.newSubmitform;
   };
 
-  const findById = function(){
+  const findById = function(id){
+    store.items.find((item) => {item.id === id;
+      return item;});
     // pass an id into the function, return the item from store.items     
   };
   const findAndUpdate = function(){
     // use findbyid to update assign the new information to the object in the store
   };
  
-  const findAndExpand = function(){
+  const findAndExpand = function(id){
+    const item =  findById(id);
+    item.expanded = !item.expanded;
   //  find by id, toggle the *storeonly* key of expanded element 
   };
   

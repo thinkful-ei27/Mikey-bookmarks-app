@@ -51,15 +51,41 @@ const bookmarkList = (function(){
 
   }
   
-  function generateItemElement(){
-  // if item expanded is true, desplay expanded html
-  // the error message display also happens here
-  //otherwise the 
-  // perhaps split into multiple generate item
+  function generateItemElement(item){
+    if(item.expand === false){
+      return `
+      <li class="contracted-li" data-item-id="${item.id}">
+      <div class="contracted">
+        <h3>${item.title}</h3>
+        <button name="expand">expand</button>
+        <span class="rating">Rating = ${item.rating}</span>
+      </div>
+    </li>`;
+    }
+    return `
+    <li class="expanded-li" data-item-id="${item.id}">
+    <div class="expanded">
+      <h3>${item.title}</h3>
+      <button name="expand">contract</button>
+      <p class="description"> foobar</p>
+      <span class="rating">Rating = ${item.rating}</span>
+      <button name="delete" class="delete-button">Delete</button> 
+      <button name="visit-URL">Visit Site</button>
+    </div>
+  </li>`;
+
+    // if item expanded is true, desplay expanded html
+    // the error message display also happens here
+ 
   }
 
-  function generateBookmarkItemsString() {
-  
+  function generateBookmarkItemsString() { 
+    const bookmarks = store.items;
+    const itemHtmlArray = bookmarks.map((item) => console.log(item));
+
+    let htmlString = '';
+    htmlString.concat(itemHtmlArray);
+    return htmlString;
     // map over the store.items and apply generateitemelements, then concatenate
   
   }
@@ -68,9 +94,10 @@ const bookmarkList = (function(){
     // if item.rating< store.minimumrating do not display item with filter
     
     const formString = generateFormNavigation();
-    
+    const listString = generateBookmarkItemsString();
     //  insert into dom
     $('#form-container').html(formString);
+    $('.js-list').html(listString);
   }
 
   function getItemIdFromElement(){
