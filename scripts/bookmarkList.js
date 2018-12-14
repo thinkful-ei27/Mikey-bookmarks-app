@@ -1,5 +1,5 @@
 'use strict';
-/*global store, $*/
+/*global store, api, $*/
 
 const bookmarkList = (function(){
 
@@ -17,7 +17,7 @@ const bookmarkList = (function(){
              </div>
            <div class="input-group">
              <label for="title">Bookmark  URL</label>
-             <input type="text" name="URL" placeholder="insert URL here">
+             <input type="text" name="url" placeholder="insert URL here">
              </div>
            <div class="input-group">
              <label for="title">Description</label>
@@ -157,8 +157,13 @@ const bookmarkList = (function(){
 
   }
 
-  function prepareJson(){
-
+  function prepareJson(arr){
+    const streamlinedObj = {};
+    const parsedArr = arr.map(obj => { return Object.values(obj);});
+    parsedArr.forEach( arr => {
+      streamlinedObj[arr[0]]=arr[1];
+    });
+    return JSON.stringify(streamlinedObj);
   }
   
 
@@ -166,9 +171,15 @@ const bookmarkList = (function(){
     $('#form-container').on('click','.js-submit-button',function() {
       $('.js-add-bookmark').submit(function(event){
         event.preventDefault();
-        console.log($(event.target).serializeArray());
+        const formArray = $(event.target).serializeArray();
+        const jsonObj = prepareJson(formArray);
+        api.createItem(jsonObj, (item => {
+          store.addExpandkey(item);
+          render();}
+        ));
       });
     });
+    
   }
   
 

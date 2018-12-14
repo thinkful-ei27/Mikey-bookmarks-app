@@ -1,5 +1,5 @@
 'use strict';
-/* global api, $*/ 
+/* global api, bookmarkList, $*/ 
 
 const api = (function(){
 
@@ -10,19 +10,19 @@ const api = (function(){
   };
 
   const createItem = function(name, callback){
-    const newItem = JSON.stringify({name});
-  
+
+    console.log(name);
     $.ajax({
       url: `${BASE_URL}/bookmarks`,
       method:'POST',
       contentType :'application/json',
-      data: newItem,
+      data: name,
       success: callback,
       error : '',//work on this later//
       
 
     });
-  
+
   };
   
   const editItem = function(){
