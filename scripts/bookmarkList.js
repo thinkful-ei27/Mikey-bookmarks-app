@@ -40,13 +40,11 @@ const bookmarkList = (function(){
     <button class="js-form-expansion">Click to Expand</button>    
     <br>
     <label for="rating">Filter by minimum rating:</label>
-    <select name="rating" id="rating-dropdown">
-      <option class="rating" value="5">5</option>
-      <option class="rating" value="4">4</option>
-      <option class="rating" value="3">3</option>
-      <option class="rating" value="2">2</option>
-      <option class="rating" value="1" selected="selected">1</option>
-   </select>
+         <input class="rating" type="radio" name="rating" value="5"> 5
+         <input class="rating" type="radio" name="rating" value="4"> 4
+         <input class="rating" type="radio" name="rating" value="3"> 3
+         <input class="rating" type="radio" name="rating" value="2"> 2
+         <input class="rating" type="radio" name="rating" value="1"  selected="selected" > 1
 </section>`;
 
   }
@@ -140,7 +138,9 @@ const bookmarkList = (function(){
   
   function handleSetMinRating() {
     $('#form-container').on('click', '.rating', (event)=>{
-      console.log('hithere' , event.currentTarget) ;  
+      const item = event.currentTarget;
+      const rating = $(item).attr('value');
+      console.log(rating);
     });
 
   }
