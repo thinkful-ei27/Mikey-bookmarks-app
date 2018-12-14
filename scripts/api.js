@@ -11,7 +11,6 @@ const api = (function(){
 
   const createItem = function(name, callback){
 
-    console.log(name);
     $.ajax({
       url: `${BASE_URL}/bookmarks`,
       method:'POST',
@@ -20,7 +19,6 @@ const api = (function(){
       success: callback,
       error : '',//work on this later//
       
-
     });
 
   };

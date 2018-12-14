@@ -52,7 +52,6 @@ const bookmarkList = (function(){
          <input class="rating" type="radio" name="rating" value="2"> 2
          <input class="rating" type="radio" name="rating" value="1" selected="selected"> 1
 </section>`;
-
   }
   
   function generateItemElement(item){
@@ -120,8 +119,6 @@ const bookmarkList = (function(){
     const id =  $(item)
       .closest('.js-list-item').data('item-id');
     return id;
-    // id is stored in the element, for store access
-
   }
 
   function handleNewSubmitToggle(){
