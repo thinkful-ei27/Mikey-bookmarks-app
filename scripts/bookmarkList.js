@@ -10,15 +10,18 @@ const bookmarkList = (function(){
       <form class="js-add-bookmark">
        <fieldset>
          <legend>Add Bookmark</legend>
-           <div class="input-group"></div>
+         <div>
+           <div class="input-group">
              <label for="title">Bookmark Title</label>
-             <input type="text" placeholder="insert Title here">
-           <div class="input-group"></div>
+             <input type="text" name="title" placeholder="insert Title here">
+             </div>
+           <div class="input-group">
              <label for="title">Bookmark  URL</label>
-             <input type="text" placeholder="insert URL here">
+             <input type="text" name="URL" placeholder="insert URL here">
+             </div>
            <div class="input-group">
              <label for="title">Description</label>
-             <input type="text" placeholder="write a short description">
+             <input type="text" name="desc" placeholder="write a short description">
            </div>
            <div class="input-group">
              <label for="rating">Rate this bookmark</label><br>
@@ -28,12 +31,15 @@ const bookmarkList = (function(){
              <input type="radio" name="rating" value="2"> 2
              <input type="radio" name="rating" value="1"> 1
            </div>
-           <label for="submit-button">Submit new bookmark:</label>
-           <button type"submit" name="submit">Submit</button>
-        </fieldset>
+           </div>
+           <div class="input-group">
+           <input class="js-submit-button" type="submit" value="submit">
+          </div>
+          </fieldset>
       </form>
    <button class="js-form-expansion"name="cancel">cancel</button>   
 </section>`;
+// took out label for button
     }
     return `<section class="contracted-form">
     <label for="form-expansion">Submit new Bookmark:</label>
@@ -146,16 +152,25 @@ const bookmarkList = (function(){
       const item = event.currentTarget;
       const rating = $(item).attr('value');
       store.setMinimumRating(rating);
-  
+      render();
     });
+
+  }
+
+  function prepareJson(){
 
   }
   
 
   function handleNewItemSubmit(){
-    $('#form-container').submit( );
-    // accesss the
+    $('#form-container').on('click','.js-submit-button',function() {
+      $('.js-add-bookmark').submit(function(event){
+        event.preventDefault();
+        console.log($(event.target).serializeArray());
+      });
+    });
   }
+  
 
   function handleDeleteButtonClicked(){
     // api delete request
