@@ -44,7 +44,7 @@ const bookmarkList = (function(){
          <input class="rating" type="radio" name="rating" value="4"> 4
          <input class="rating" type="radio" name="rating" value="3"> 3
          <input class="rating" type="radio" name="rating" value="2"> 2
-         <input class="rating" type="radio" name="rating" value="1"  selected="selected" > 1
+         <input class="rating" type="radio" name="rating" value="1" selected="selected"> 1
 </section>`;
 
   }
@@ -96,8 +96,13 @@ const bookmarkList = (function(){
 
 
   function render(){
-    // if item.rating< store.minimumrating do not display item with filter
-    const bookmarks = store.items;
+    
+    
+    const filteredItems = store.items.filter(item => {
+      return item.rating >= store.minimumRating;
+    });
+   
+    const bookmarks = filteredItems;
     const formString = generateFormNavigation();
     const listString = generateBookmarkItemsString(bookmarks);
     //  insert into dom
@@ -140,7 +145,8 @@ const bookmarkList = (function(){
     $('#form-container').on('click', '.rating', (event)=>{
       const item = event.currentTarget;
       const rating = $(item).attr('value');
-      console.log(rating);
+      store.setMinimumRating(rating);
+  
     });
 
   }

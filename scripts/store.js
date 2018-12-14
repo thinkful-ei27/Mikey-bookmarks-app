@@ -1,4 +1,5 @@
 'use strict';
+/*global bookmarkList */
 const store = (function(){
 
   const MOCK_DATA =[{desc: 'My overlord',
@@ -33,9 +34,12 @@ const store = (function(){
   };
 
   const findById = function(id){
-    return store.items.find((item) => {item.id === id;
-      return item;});
-    
+    const foundItem = store.items.find(function(item){
+      if(item.id === id){
+        return item;}
+      return;
+    });
+  return foundItem;
     // pass an id into the function, return the item from store.items     
   };
   const findAndUpdate = function(){
@@ -53,10 +57,10 @@ const store = (function(){
     window.open(item.url);
   };
   
-  const setMinimumRating = function(){
-    
-    // recieves the data from the event listener and updates the minimum rating,
-    // in the render function if rating is less than store.minimumrating, do not display
+  const setMinimumRating = function(num){
+    store.minimumRating = num;
+    console.log(store.minimumRating);
+  
   };
   const findAndDelete = function(){
     // filter the items array and 
@@ -72,7 +76,7 @@ const store = (function(){
   return { 
     items: [],
     newSubmitform: false,
-    minimumRating: 1,
+    minimumRating: null,
     error: null,
 
     addExpandkey,
@@ -87,6 +91,8 @@ const store = (function(){
     MOCK_DATA,
     findAndOpenPage,
 
-
+   
   };
 }());
+
+

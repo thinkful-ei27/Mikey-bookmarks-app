@@ -1,4 +1,4 @@
-<!-- 
+
 this is the contracted form html 
 <section class="contracted-form">
     <label for="form-expansion">Submit new Bookmark:</label>
@@ -6,13 +6,13 @@ this is the contracted form html
     <br>
     <label for="rating">Filter by minimum rating:</label>
     <select name="rating" id="rating-dropdown">
-      <option value="5">5</option>
-      <option value="4">4</option>
-      <option value="3">3</option>
-      <option value="2">2</option>
-      <option value="1" selected="selected">1</option>
+      <option class="rating" value="5">5</option>
+      <option class="rating" value="4">4</option>
+      <option class="rating" value="3">3</option>
+      <option class="rating" value="2">2</option>
+      <option class="rating" value="1" selected="selected">1</option>
    </select>
-</section> -->
+</section>
 
 <!-- this is the expanded form html -->
 
@@ -67,3 +67,10 @@ this is the contracted form html
     </div>
   </li>
 
+
+<!-- this code does work -->
+  <input class="rating" type="radio" name="rating" value="5"> 5
+  <input class="rating" type="radio" name="rating" value="4"> 4
+  <input class="rating" type="radio" name="rating" value="3"> 3
+  <input class="rating" type="radio" name="rating" value="2"> 2
+  <input class="rating" type="radio" name="rating" value="1"  selected="selected" > 1
