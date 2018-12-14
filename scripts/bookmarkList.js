@@ -69,7 +69,7 @@ const bookmarkList = (function(){
       <button class="expand" name="expand">minimize</button></div>
       <span class="description"> ${item.desc}</span><br>
       <span class="rating">Rating = ${item.rating}</span>
-      <button name="visit-URL">Visit Site</button><br>
+      <button class="js-visit-URL" name="visit-URL">Visit Site</button><br>
       <button name="delete" class="delete-button">Delete</button> 
     </div>
   </li>`;
@@ -130,6 +130,14 @@ const bookmarkList = (function(){
       render();
     });
   }
+
+  function handleVisitSite() {
+    $('.js-list').on('click', '.js-visit-URL', (event)=>{
+      const id = getItemIdFromElement(event.currentTarget);
+      store.findAndOpenPage(id);
+    })
+
+  }
   
   
 
@@ -149,6 +157,7 @@ const bookmarkList = (function(){
     handleNewSubmitToggle();
     handleNewItemSubmit();
     handleBookmarkExpand();
+    handleVisitSite();
   }
 
   return {

@@ -48,7 +48,13 @@ const store = (function(){
   //  find by id, toggle the *storeonly* key of expanded element 
   };
   
+  const findAndOpenPage =function(id){
+    const item = findById(id);
+    window.open(item.url);
+  };
+  
   const setMinimumRating = function(){
+    
     // recieves the data from the event listener and updates the minimum rating,
     // in the render function if rating is less than store.minimumrating, do not display
   };
@@ -79,6 +85,7 @@ const store = (function(){
     errorMessage,
     expandForm,
     MOCK_DATA,
+    findAndOpenPage,
 
 
   };
