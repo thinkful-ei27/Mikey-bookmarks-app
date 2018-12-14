@@ -41,11 +41,11 @@ const bookmarkList = (function(){
     <br>
     <label for="rating">Filter by minimum rating:</label>
     <select name="rating" id="rating-dropdown">
-      <option value="5">5</option>
-      <option value="4">4</option>
-      <option value="3">3</option>
-      <option value="2">2</option>
-      <option value="1" selected="selected">1</option>
+      <option class="rating" value="5">5</option>
+      <option class="rating" value="4">4</option>
+      <option class="rating" value="3">3</option>
+      <option class="rating" value="2">2</option>
+      <option class="rating" value="1" selected="selected">1</option>
    </select>
 </section>`;
 
@@ -135,10 +135,15 @@ const bookmarkList = (function(){
     $('.js-list').on('click', '.js-visit-URL', (event)=>{
       const id = getItemIdFromElement(event.currentTarget);
       store.findAndOpenPage(id);
-    })
-
+    });
   }
   
+  function handleSetMinRating() {
+    $('#form-container').on('click', '.rating', (event)=>{
+      console.log('hithere' , event.currentTarget) ;  
+    });
+
+  }
   
 
   function handleNewItemSubmit(){
@@ -158,6 +163,7 @@ const bookmarkList = (function(){
     handleNewItemSubmit();
     handleBookmarkExpand();
     handleVisitSite();
+    handleSetMinRating();
   }
 
   return {
