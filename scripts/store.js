@@ -1,16 +1,16 @@
 'use strict';
 const store = (function(){
 
-  const addExpandkey = function(){
-    store.items.map((item)=> {
+  const addExpandkey = function(arr){
+    arr.map((item)=> {
       item['expanded'] = false;
+      addItem(item);
     });
   };
 
-  const addItem = function(arr){
-    arr.map((item)=> {console.log(typeof item);
-      store.items.push(item);});
-    addExpandkey();
+  const addItem = function(item){
+    store.items.push(item);
+    
     // the api sends an array of item objects
   };
   

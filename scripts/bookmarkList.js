@@ -52,6 +52,7 @@ const bookmarkList = (function(){
   }
   
   function generateItemElement(item){
+
     if(item.expand === false){
       return `
       <li class="contracted-li" data-item-id="${item.id}">
@@ -79,14 +80,14 @@ const bookmarkList = (function(){
  
   }
 
-  function generateBookmarkItemsString() { 
-    const bookmarks = store.items;
-    const itemHtmlArray = bookmarks.map((item) => console.log(item));
+  function generateBookmarkItemsString(bookmarks) { 
 
-    let htmlString = '';
-    htmlString.concat(itemHtmlArray);
-    return htmlString;
-    // map over the store.items and apply generateitemelements, then concatenate
+
+    // i think the problem here was an order of oeprations one?
+    //  perhaps has to happen through render
+
+
+    // // map over the store.items and apply generateitemelements, then concatenate
   
   }
 

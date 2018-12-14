@@ -6,7 +6,7 @@ $(document).ready(function() {
  
   bookmarkList.bindEventListeners();
   bookmarkList.render();
-  api.getItems(store.addItem);
+  api.getItems(store.addExpandkey);
  
 });
 
