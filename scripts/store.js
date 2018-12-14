@@ -33,8 +33,9 @@ const store = (function(){
   };
 
   const findById = function(id){
-    store.items.find((item) => {item.id === id;
+    return store.items.find((item) => {item.id === id;
       return item;});
+    
     // pass an id into the function, return the item from store.items     
   };
   const findAndUpdate = function(){
@@ -42,7 +43,7 @@ const store = (function(){
   };
  
   const findAndExpand = function(id){
-    const item =  findById(id);
+    const item = findById(id);
     item.expanded = !item.expanded;
   //  find by id, toggle the *storeonly* key of expanded element 
   };
@@ -82,6 +83,3 @@ const store = (function(){
 
   };
 }());
-
-console.log(store.MOCK_DATA);
-console.log(store.items);

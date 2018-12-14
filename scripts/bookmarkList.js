@@ -29,7 +29,7 @@ const bookmarkList = (function(){
              <input type="radio" name="rating" value="1"> 1
            </div>
            <label for="submit-button">Submit new bookmark:</label>
-           <button name="submit">Submit</button>
+           <button type"submit" name="submit">Submit</button>
         </fieldset>
       </form>
    <button class="js-form-expansion"name="cancel">cancel</button>   
@@ -52,26 +52,25 @@ const bookmarkList = (function(){
   }
   
   function generateItemElement(item){
-    console.log('generateitemelement', item);
-    if(item.expand === false){
+    if(item.expanded === false){
       return `
-      <li class="contracted-li" data-item-id="${item.id}">
+      <li class="js-list-item" data-item-id="${item.id}">
       <div class="contracted">
-        <h3>${item.title}</h3>
-        <button name="expand">expand</button>
+      <div class="heading"><h3>${item.title}</h3>
+      <button class="expand" name="expand">expand</button></div>
         <span class="rating">Rating = ${item.rating}</span>
       </div>
     </li>`;
     }
     return `
-    <li class="expanded-li" data-item-id="${item.id}">
+    <li class="js-list-item" data-item-id="${item.id}">
     <div class="expanded">
-      <h3>${item.title}</h3>
-      <button name="expand">contract</button>
-      <p class="description"> foobar</p>
+      <div class="heading"><h3>${item.title}</h3>
+      <button class="expand" name="expand">minimize</button></div>
+      <span class="description"> ${item.desc}</span><br>
       <span class="rating">Rating = ${item.rating}</span>
+      <button name="visit-URL">Visit Site</button><br>
       <button name="delete" class="delete-button">Delete</button> 
-      <button name="visit-URL">Visit Site</button>
     </div>
   </li>`;
 
@@ -103,29 +102,40 @@ const bookmarkList = (function(){
     const bookmarks = store.items;
     const formString = generateFormNavigation();
     const listString = generateBookmarkItemsString(bookmarks);
-    console.log(listString);
     //  insert into dom
     $('#form-container').html(formString);
     $('.js-list').html(listString);
   }
 
-  function getItemIdFromElement(){
+  function getItemIdFromElement(item){
+    const id =  $(item)
+      .closest('.js-list-item').data('item-id');
+    return id;
     // id is stored in the element, for store access
 
   }
 
   function handleNewSubmitToggle(){
-    console.log('handleNewSubmitToggle ran');
     $('#form-container').on('click', '.js-form-expansion',()=>{
-      console.log('form submit toggle clicked');
       store.expandForm();
       render();
     });
-
   }
 
+
+  function handleBookmarkExpand() {
+    $('.js-list').on('click', '.expand', (event) => {
+      const id = getItemIdFromElement(event.currentTarget);
+      store.findAndExpand(id);
+      render();
+    });
+  }
+  
+  
+
   function handleNewItemSubmit(){
-    // accesss the post request
+    $('#form-container').submit( );
+    // accesss the
   }
 
   function handleDeleteButtonClicked(){
@@ -137,7 +147,8 @@ const bookmarkList = (function(){
   
   function bindEventListeners(){
     handleNewSubmitToggle();
-
+    handleNewItemSubmit();
+    handleBookmarkExpand();
   }
 
   return {
