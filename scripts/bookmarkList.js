@@ -52,7 +52,7 @@ const bookmarkList = (function(){
   }
   
   function generateItemElement(item){
-
+    console.log('generateitemelement', item);
     if(item.expand === false){
       return `
       <li class="contracted-li" data-item-id="${item.id}">
@@ -81,21 +81,29 @@ const bookmarkList = (function(){
   }
 
   function generateBookmarkItemsString(bookmarks) { 
+    const htmlArray =  bookmarks.map(function(item){
+      return generateItemElement(item);
+    });
+    const htmlString = '';
+    return htmlString.concat(htmlArray);
 
-
-    // i think the problem here was an order of oeprations one?
-    //  perhaps has to happen through render
-
-
-    // // map over the store.items and apply generateitemelements, then concatenate
-  
   }
+  
+  // i think the problem here was an order of oeprations one?
+  //  perhaps has to happen through render
+
+
+  // // map over the store.items and apply generateitemelements, then concatenate
+  
+  
+
 
   function render(){
     // if item.rating< store.minimumrating do not display item with filter
-    
+    const bookmarks = store.items;
     const formString = generateFormNavigation();
-    const listString = generateBookmarkItemsString();
+    const listString = generateBookmarkItemsString(bookmarks);
+    console.log(listString);
     //  insert into dom
     $('#form-container').html(formString);
     $('.js-list').html(listString);

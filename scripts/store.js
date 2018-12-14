@@ -1,11 +1,24 @@
 'use strict';
 const store = (function(){
 
-  const addExpandkey = function(arr){
-    arr.map((item)=> {
-      item['expanded'] = false;
-      addItem(item);
-    });
+  const MOCK_DATA =[{desc: 'My overlord',
+    expanded: false,
+    id: 'cjpmymvam00160kwnuzhct89v',
+    rating: 5,
+    title: 'google',
+    url: 'https://www.google.com/',},
+  {desc: 'tech news',
+    expanded: false,
+    id: 'cjpn7nohj001x0kwnw4vd1qdo',
+    rating: 3,
+    title: 'techmeme',
+    url: 'https://www.techmeme.com/river'}
+  ];
+
+  const addExpandkey = function(item){
+    item.expanded = false;
+    addItem(item);
+  
   };
 
   const addItem = function(item){
@@ -64,8 +77,11 @@ const store = (function(){
     findAndDelete,
     errorMessage,
     expandForm,
+    MOCK_DATA,
 
 
   };
 }());
 
+console.log(store.MOCK_DATA);
+console.log(store.items);
