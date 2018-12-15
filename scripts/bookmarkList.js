@@ -172,6 +172,7 @@ const bookmarkList = (function(){
         const jsonObj = prepareJson(formArray);
         api.createItem(jsonObj, (item => {
           store.addExpandkey(item);
+          // add if statement contigent on succesful submission
           store.expandForm();
           render();}
         ));

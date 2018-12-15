@@ -53,6 +53,8 @@ const store = (function(){
     // recieves the callback error from the ajax request 
     // edits the error on the store object,
     // later build html based upon wether the error message is toggled or night
+   // add if statement contigent on succesful submission in form submit to close form
+
   };
 
 
