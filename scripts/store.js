@@ -64,6 +64,8 @@ const store = (function(){
     newSubmitform: false,
     minimumRating: null,
     error: null,
+    // store an array of objects with error messages?
+
 
     addExpandkey,
     addItem,

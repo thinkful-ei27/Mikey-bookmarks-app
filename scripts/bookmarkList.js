@@ -101,18 +101,18 @@ const bookmarkList = (function(){
 
 
   function render(){
-    
-    
     const filteredItems = store.items.filter(item => {
       return item.rating >= store.minimumRating;
     });
-   
     const bookmarks = filteredItems;
+    const error = handleErrorsString();
     const formString = generateFormNavigation();
     const listString = generateBookmarkItemsString(bookmarks);
     //  insert into dom
     $('#form-container').html(formString);
     $('.js-list').html(listString);
+    $('#error').html(error);
+    store.error = null;
   }
 
   function getItemIdFromElement(item){
@@ -134,6 +134,7 @@ const bookmarkList = (function(){
       const id = getItemIdFromElement(event.currentTarget);
       store.findAndExpand(id);
       render();
+      
     });
   }
 
@@ -189,6 +190,24 @@ const bookmarkList = (function(){
     }); 
   }
 
+  function handleErrorsString(){ 
+    console.log('errorstring ran');
+    if(store.error === 'error'){
+      return `
+    <div class="error-message">
+    <h2>Error!</h2>
+     <span>Please enter a valid title or URL</span>
+    </div>`;
+    }
+    return `
+    <div></div>
+    `;
+  }
+    
+    
+    
+  
+
    
 
   
@@ -199,6 +218,7 @@ const bookmarkList = (function(){
     handleVisitSite();
     handleSetMinRating();
     handleDeleteButtonClicked();
+    handleErrorsString();
   }
 
   return {

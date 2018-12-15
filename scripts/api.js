@@ -1,5 +1,5 @@
 'use strict';
-/* global api, bookmarkList, $*/ 
+/* global api, store, bookmarkList $*/ 
 
 const api = (function(){
 
@@ -7,6 +7,12 @@ const api = (function(){
 
   const getItems = function(callback){
     $.getJSON(`${BASE_URL}/bookmarks`, callback);
+  };
+
+
+  const errorCallback = function(){
+    store.error = 'error';
+    bookmarkList.render();
   };
 
   const createItem = function(name, callback){
@@ -17,7 +23,7 @@ const api = (function(){
       contentType :'application/json',
       data: name,
       success: callback,
-      error : '',//work on this later//
+      error : errorCallback
       
     });
 
@@ -32,7 +38,6 @@ const api = (function(){
       method : 'DELETE',
       contentType : 'aplication/json',
       success : callback,
-      error : ''
     });
   };
 
