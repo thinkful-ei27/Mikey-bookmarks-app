@@ -39,7 +39,7 @@ const bookmarkList = (function(){
       </form>
    <button class="js-form-expansion"name="cancel">cancel</button>   
 </section>`;
-// took out label for button
+      // took out label for button
     }
     return `<section class="contracted-form">
     <label for="form-expansion">Submit new Bookmark:</label>
@@ -76,9 +76,6 @@ const bookmarkList = (function(){
       <button name="delete" class="delete-button">Delete</button> 
     </div>
   </li>`;
-
-    // if item expanded is true, desplay expanded html
-    // the error message display also happens here
  
   }
 
@@ -91,15 +88,6 @@ const bookmarkList = (function(){
 
   }
   
-  // i think the problem here was an order of oeprations one?
-  //  perhaps has to happen through render
-
-
-  // // map over the store.items and apply generateitemelements, then concatenate
-  
-  
-
-
   function render(){
     const filteredItems = store.items.filter(item => {
       return item.rating >= store.minimumRating;
@@ -128,7 +116,6 @@ const bookmarkList = (function(){
     });
   }
 
-
   function handleBookmarkExpand() {
     $('.js-list').on('click', '.expand', (event) => {
       const id = getItemIdFromElement(event.currentTarget);
@@ -152,7 +139,6 @@ const bookmarkList = (function(){
       store.setMinimumRating(rating);
       render();
     });
-
   }
 
   function prepareJson(arr){
@@ -164,7 +150,6 @@ const bookmarkList = (function(){
     return JSON.stringify(streamlinedObj);
   }
   
-
   function handleNewItemSubmit(){
     $('#form-container').on('click','.js-submit-button',function() {
       $('.js-add-bookmark').submit(function(event){
@@ -181,7 +166,6 @@ const bookmarkList = (function(){
     });   
   }
   
-
   function handleDeleteButtonClicked(){
     $('.js-list').on('click', '.delete-button', (event)=>{
       const id = getItemIdFromElement(event.currentTarget);
@@ -191,7 +175,6 @@ const bookmarkList = (function(){
   }
 
   function handleErrorsString(){ 
-    console.log('errorstring ran');
     if(store.error === 'error'){
       return `
     <div class="error-message">
@@ -204,13 +187,6 @@ const bookmarkList = (function(){
     `;
   }
     
-    
-    
-  
-
-   
-
-  
   function bindEventListeners(){
     handleNewSubmitToggle();
     handleNewItemSubmit();

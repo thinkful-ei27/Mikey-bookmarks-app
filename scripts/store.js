@@ -1,11 +1,10 @@
 'use strict';
-/*global bookmarkList */
+/*global  */
 const store = (function(){
 
   const addExpandkey = function(item){
     item.expanded = false;
     addItem(item);
-  
   };
 
   const addItem = function(item){
@@ -50,11 +49,8 @@ const store = (function(){
   };
 
   const errorMessage = function(){ 
-    // recieves the callback error from the ajax request 
-    // edits the error on the store object,
-    // later build html based upon wether the error message is toggled or night
-   // add if statement contigent on succesful submission in form submit to close form
-
+    // handled error elsewhere but will probably use this if there was more than 
+    // one error message, perhaps seperate message for PATCH request errors
   };
 
 
