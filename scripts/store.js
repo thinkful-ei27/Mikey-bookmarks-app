@@ -45,8 +45,8 @@ const store = (function(){
     store.minimumRating = num;
   };
 
-  const findAndDelete = function(){
-    // filter the items array and 
+  const findAndDelete = function(id){
+    store.items = store.items.filter(item => item.id !== id);
   };
 
   const errorMessage = function(){ 

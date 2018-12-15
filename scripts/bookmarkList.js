@@ -175,13 +175,16 @@ const bookmarkList = (function(){
           render();}
         ));
       });
-    });
-    
+    });   
   }
   
 
   function handleDeleteButtonClicked(){
-    // api delete request
+    $('.js-list').on('click', '.delete-button', (event)=>{
+      const id = getItemIdFromElement(event.currentTarget);
+      store.findAndDelete(id);
+      api.deleteItem(id, render());
+    }); 
   }
 
    
@@ -193,6 +196,7 @@ const bookmarkList = (function(){
     handleBookmarkExpand();
     handleVisitSite();
     handleSetMinRating();
+    handleDeleteButtonClicked();
   }
 
   return {

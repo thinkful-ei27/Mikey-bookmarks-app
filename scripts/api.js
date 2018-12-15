@@ -26,8 +26,14 @@ const api = (function(){
   const editItem = function(){
   // ajax patch
   };
-  const deleteItem = function(){
-  //ajax delete
+  const deleteItem = function(id , callback){
+    $.ajax({
+      url : `${BASE_URL}/bookmarks/${id}`,
+      method : 'DELETE',
+      contentType : 'aplication/json',
+      success : callback,
+      error : ''
+    });
   };
 
   return{
