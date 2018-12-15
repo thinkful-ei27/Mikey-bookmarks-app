@@ -172,6 +172,7 @@ const bookmarkList = (function(){
         const jsonObj = prepareJson(formArray);
         api.createItem(jsonObj, (item => {
           store.addExpandkey(item);
+          store.expandForm();
           render();}
         ));
       });
